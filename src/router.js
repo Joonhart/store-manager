@@ -21,7 +21,6 @@ export const router = createBrowserRouter([
             },
             {
                 path: "manage",
-                element: <App />,
                 children: [
                     {
                         index: true,
@@ -43,7 +42,6 @@ export const router = createBrowserRouter([
             },
             {
                 path: "stat",
-                element: <App />,
                 children: [
                     {
                         index: true,
