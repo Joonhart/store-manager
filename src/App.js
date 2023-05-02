@@ -6,7 +6,7 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 function App() {
   return (
     <DarkModeProvider>
-    <div className="flex">
+    <div className="flex bg-white dark:bg-slate-800 dark:text-slate-300">
       <LeftMenu />
       <Header />
       <Outlet />
