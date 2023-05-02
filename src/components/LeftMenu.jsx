@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function LeftMenu() {
   return (
-    <div className="w-2/12 bg-blue-950 h-full text-white">
+    <div className="w-2/12 bg-blue-100 h-full text-black dark:bg-blue-950 dark:text-white">
       레프트메뉴인데영
       <p>네임카드</p>
       <Link to="/">
