@@ -8,8 +8,10 @@ function App() {
     <DarkModeProvider>
     <div className="flex bg-white dark:bg-slate-800 dark:text-slate-300">
       <LeftMenu />
+      <main>
       <Header />
       <Outlet />
+      </main>
     </div>
     </DarkModeProvider>
   );

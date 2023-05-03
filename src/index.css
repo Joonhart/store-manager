@@ -15,3 +15,7 @@ body {
 input {
   @apply p-4 outline-none border border-gray-300 my-1
 }
+
+li {
+  margin-top: 25px;
+}
