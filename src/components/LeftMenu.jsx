@@ -9,9 +9,9 @@ export default function LeftMenu() {
     <div className="w-3/12 bg-blue-100 h-screen p-4 pt-10 text-2xl text-black dark:bg-blue-950 dark:text-slate-300">
       <ProfileCard />
       <hr className="my-8 h-1 bg-black dark:bg-blue-300" />
-      <Link to="/">DashBoard</Link>
+      <Link to="/"><h2>DASHBOARD</h2></Link>
       <hr className="my-8 h-1 bg-black dark:bg-blue-300" />
-      <p>관리</p>
+      <h2>관리</h2>
       <ul className={ulClass}>
         <li>
           <Link to="/manage/revenu">매출 관리</Link>
@@ -24,7 +24,7 @@ export default function LeftMenu() {
         </li>
       </ul>
       <hr className="my-8 h-1 bg-black dark:bg-blue-300" />
-      <p>통계</p>
+      <h2>통계</h2>
       <ul className={ulClass}>
         <li>
           <Link to="/stat/all">전체</Link>

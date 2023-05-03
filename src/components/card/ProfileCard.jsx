@@ -6,7 +6,7 @@ export default function ProfileCard() {
   return (
     <div className='m-4'>
       <div className='flex justify-between'>
-        <p>리즈 델리</p>
+        <h1>리즈 델리</h1>
         <p><GiHamburgerMenu /></p>
       </div>
       <img src={hamburger} alt="shop" className='m-4 my-8 rounded-full'/>
