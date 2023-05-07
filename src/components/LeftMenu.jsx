@@ -9,7 +9,7 @@ export default function LeftMenu({setCurMenu}) {
     setCurMenu(e.target.innerHTML);
   }
   return (
-    <div className="w-3/12 bg-blue-100 h-screen p-4 pt-10 text-2xl text-black dark:bg-blue-950 dark:text-slate-300">
+    <div className="w-3/12 bg-blue-100 h-screen p-4 pt-10 text-lg md:text-xl lg:text-2xl text-black dark:bg-blue-950 dark:text-slate-300">
       <ProfileCard />
       <hr className="my-8 h-1 bg-black dark:bg-blue-300" />
       <Link to="/" onClick={changeMenuHandler}><h2>DASHBOARD</h2></Link>

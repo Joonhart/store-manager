@@ -5,7 +5,7 @@ import {HiMoon, HiSun} from 'react-icons/hi'
 export default function Header({curMenu}) {
     const {darkMode, toggleDarkMode} = useDarkMode();
   return (
-    <header className='h-12 top-0 flex items-center text-xl'>
+    <header className='h-12 top-0 flex items-center text-lg lg:text-xl'>
         <div>
           리즈델리 의 {curMenu}
         </div>
