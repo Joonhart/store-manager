@@ -10,7 +10,7 @@ function App() {
     <DarkModeProvider>
     <div className="flex bg-white dark:bg-slate-800 dark:text-slate-300">
       <LeftMenu setCurMenu={setCurMenu}/>
-      <main>
+      <main className="w-full p-4">
       <Header curMenu={curMenu}/>
       <Outlet />
       </main>
