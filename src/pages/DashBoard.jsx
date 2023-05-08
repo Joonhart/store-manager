@@ -1,5 +1,6 @@
 import React from "react";
 import TextCard from "../components/card/TextCard";
+import { BarLineChart } from "../components/chart/BarLineChart";
 
 export default function DashBoard() {
   const totalMoney = 185000;
@@ -28,8 +29,11 @@ export default function DashBoard() {
           comparedToLastWeek={comparedToLastWeek}
         />
       </section>
-      <section className="py-4">최근 7일 매출/주문 라인 차트</section>
-      <section className="py-4">최근 7일 지출/매출 stack bar chart</section>
+      <section className="pt-10">
+        <p>최근 7일 매출/주문 라인 차트</p>
+        <BarLineChart />
+      </section>
+      <section className="pt-10">최근 7일 지출/매출 stack bar chart</section>
     </div>
   );
 }
