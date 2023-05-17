@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body, #root {
   margin: 0;
-  height: 100vh;
+  height: 100%;
   @apply flex flex-col items-center;
 }
 
 #root {
-  @apply w-full max-w-screen-2xl
+  @apply w-full
 }
 
 input {

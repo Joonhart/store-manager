@@ -8,7 +8,7 @@ function App() {
   const [curMenu, setCurMenu] = useState("DASHBOARD");
   return (
     <DarkModeProvider>
-    <div className="flex bg-white dark:bg-slate-800 dark:text-slate-300">
+    <div className="flex w-full h-full bg-white dark:bg-slate-800 dark:text-slate-300">
       <LeftMenu setCurMenu={setCurMenu}/>
       <main className="w-full p-2">
       <Header curMenu={curMenu}/>

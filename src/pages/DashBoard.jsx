@@ -8,7 +8,7 @@ export default function DashBoard() {
   const comparedToYesterday = "+₩28000(+16%)";
   const comparedToLastWeek = "+₩36000(+20%)";
   return (
-    <div className="py-2 pt-10">
+    <div className="py-2">
       <section className="grid grid-cols-1 xl:grid-cols-3 gap-2">
         <TextCard
           title={title}
@@ -30,10 +30,9 @@ export default function DashBoard() {
         />
       </section>
       <section className="pt-10">
-        <p>최근 7일 매출/주문 라인 차트</p>
+        <p className="text-center py-4 text-xl">최근 7일 매출/주문 라인 차트</p>
         <BarLineChart />
       </section>
-      <section className="pt-10">최근 7일 지출/매출 stack bar chart</section>
     </div>
   );
 }
