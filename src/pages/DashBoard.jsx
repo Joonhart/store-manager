@@ -29,7 +29,7 @@ export default function DashBoard() {
           comparedToLastWeek={comparedToLastWeek}
         />
       </section>
-      <section className="pt-10">
+      <section className="pt-10 p-16">
         <p className="text-center py-4 text-xl">최근 7일 매출/주문 라인 차트</p>
         <BarLineChart />
       </section>
