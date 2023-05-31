@@ -1,6 +1,16 @@
 export default class Manager {
-    constructor(menuClient) {
+    constructor(revenueClient, menuClient) {
+        this.revenueClient = revenueClient;
         this.menuClient = menuClient;
+    }
+
+
+    async getDateRevenue(date) {
+        return this.revenueClient.getDateRevenue(date);
+    }
+
+    async addRevenues(revenue) {
+        return this.revenueClient.addRevenues();
     }
 
     async getMenu() {
@@ -10,4 +20,5 @@ export default class Manager {
     async addMenu(menu) {
         return this.menuClient.addMenu();
     }
+    
 }

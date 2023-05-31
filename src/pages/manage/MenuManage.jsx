@@ -4,7 +4,7 @@ import { useManager } from "../../context/ManageApiContext";
 
 export default function MenuManage() {
   const { manager } = useManager();
-  const { isLoading, error, data: menus } = useQuery(["menu"], () => manager.getMenu());
+  const { isLoading, error, data: menus } = useQuery(["menu"], () => manager.getMenu(), {staleTime: 1000 * 60 * 30});
   console.log(menus);
   return (
     <div className="flex flex-col">
