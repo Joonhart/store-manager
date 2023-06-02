@@ -20,16 +20,14 @@
         "date": "2023-05-29",
         "menuList": [
             {
-                "menu": "햄버거",
-                "soldCount": 12,
-                "soldRevenue": 92000,
-                "soldType": "배달"
+                "menu": "치즈버거",
+                "deliverySoldCount": 12,
+                "deliverySoldRevenue": 92000
             },
             {
-                "menu": "데리버거",
-                "soldCount": 16,
-                "soldRevenue": 170000,
-                "soldType": "배달"
+                "menu": "돈까스",
+                "shopSoldCount": 16,
+                "shopSoldRevenue": 170000
             }
         ]
     }

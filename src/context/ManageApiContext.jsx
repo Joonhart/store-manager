@@ -6,7 +6,6 @@ import RevenueClient from "../api/revenueClient";
 export const ManageApiContext = createContext();
 
 const menuClient = new MenuClient();
-
 const revenueClient = new RevenueClient()
 const manager = new Manager(revenueClient, menuClient);
 

@@ -4,8 +4,7 @@ import { useManager } from "../../context/ManageApiContext";
 
 export default function MenuManage() {
   const { manager } = useManager();
-  const { isLoading, error, data: menus } = useQuery(["menu"], () => manager.getMenu(), {staleTime: 1000 * 60 * 30});
-  console.log(menus);
+  const { isLoading, error, data: menus } = useQuery(["menu"], () => manager.getMenu());
   return (
     <div className="flex flex-col">
       {isLoading && <p>Loading...</p>}
@@ -57,7 +56,7 @@ export default function MenuManage() {
                         {menu.id}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        {menu.name}
+                        {menu.menu}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         {menu.price}

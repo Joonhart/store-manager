@@ -4,7 +4,6 @@ export default class Manager {
         this.menuClient = menuClient;
     }
 
-
     async getDateRevenue(date) {
         return this.revenueClient.getDateRevenue(date);
     }
