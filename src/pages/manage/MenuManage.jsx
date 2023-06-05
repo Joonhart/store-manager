@@ -1,14 +1,30 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { useManager } from "../../context/ManageApiContext";
+import { useRecoilState } from "recoil";
+import { recoilMenuState } from "../../recoil/atom";
 
 export default function MenuManage() {
-  const { manager } = useManager();
-  const { isLoading, error, data: menus } = useQuery(["menu"], () => manager.getMenu());
+  const [menus, setMenus] = useRecoilState(recoilMenuState);
+
+  console.log(menus);
+
+  const addMenu = () => {
+    const newMenuName = document.getElementById("addMenuName").value;
+    const newMenuPrice = document.getElementById("addMenuPrice").value;
+    const newMenuId = menus.data.length + 1;
+
+    setMenus({
+      ...menus,
+      data: [
+        ...menus.data,
+        { id: newMenuId, menu: newMenuName, price: newMenuPrice },
+      ],
+    });
+
+    document.getElementById("addMenuName").value = "";
+    document.getElementById("addMenuPrice").value = "";
+  };
+
   return (
     <div className="flex flex-col">
-      {isLoading && <p>Loading...</p>}
-      {error && <p>error!!</p>}
       {menus && (
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
@@ -98,17 +114,29 @@ export default function MenuManage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                    <tr>
-                      <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        <input className="bg-transparent border-none" type="text" name="addMenuName" id="addMenuName" placeholder="메뉴 이름"/>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        <input className="bg-transparent border-none" type="number" name="addMenuPrice" id="addMenuPrice" placeholder="메뉴 가격"/>
-                      </td>
-                      <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                        메뉴 추가
-                      </td>
-                    </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
+                      <input
+                        className="bg-transparent border-none"
+                        type="text"
+                        name="addMenuName"
+                        id="addMenuName"
+                        placeholder="메뉴 이름"
+                      />
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
+                      <input
+                        className="bg-transparent border-none"
+                        type="number"
+                        name="addMenuPrice"
+                        id="addMenuPrice"
+                        placeholder="메뉴 가격"
+                      />
+                    </td>
+                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                      <button onClick={addMenu}>메뉴 추가</button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>

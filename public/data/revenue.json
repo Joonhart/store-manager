@@ -30,5 +30,20 @@
                 "shopSoldRevenue": 170000
             }
         ]
+    },
+    {
+        "date": "2023-06-05",
+        "menuList": [
+            {
+                "menu": "치즈버거",
+                "deliverySoldCount": 12,
+                "deliverySoldRevenue": 92000
+            },
+            {
+                "menu": "돈까스",
+                "shopSoldCount": 16,
+                "shopSoldRevenue": 170000
+            }
+        ]
     }
 ]
