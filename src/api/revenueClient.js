@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class RevenueClient {
   async getDateRevenue(date) {
-    console.log(date);
+    console.log("get axios revenue");
     return (await axios.get("/data/revenue.json")).data.filter(d => d.date === date);
   }
 

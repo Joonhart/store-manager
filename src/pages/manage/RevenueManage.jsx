@@ -1,15 +1,39 @@
 import moment from "moment";
 import { useRecoilState } from "recoil";
 import { recoilMenuState, recoilRevenuState } from "../../recoil/atom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function RevenueManage() {
-  const [menus] = useRecoilState(recoilMenuState);
-  const [revenue, setRevenue] = useRecoilState(recoilRevenuState);
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
-  console.log(menus);
-  console.log(revenue);
-  console.log(date);
+  const [menus] = useRecoilState(recoilMenuState)
+  const [revenue] = useRecoilState(recoilRevenuState)
+  const [dateRevenue, setDateRevenue] = useState([])
+  const [dateList, setDateList] = useState([])
+
+  const changeDateEvent = (e) => {
+    setDate(e.target.value)
+  }
+
+  useEffect(() => {
+    const dateRevenueHistory = revenue.data.filter(data => data.date === date)[0].menuList
+    const newDateRevenue = []
+    menus.data.forEach(menu => {
+      const revenue = dateRevenueHistory.find(revenue => revenue.menu === menu.menu)
+      if (revenue) {
+        newDateRevenue.push(Object.assign({}, menu, revenue))
+      } else {
+        newDateRevenue.push({...menu})
+      }
+    })
+    console.log(newDateRevenue);
+    setDateRevenue(newDateRevenue)
+  }, [date])
+
+  useEffect(() => {
+    setDateList(revenue.data.map(r => r.date).reverse())
+  }, [revenue.data])
+
+  console.log(dateRevenue);
 
   return (
     <div className="flex flex-col">
@@ -17,9 +41,9 @@ export default function RevenueManage() {
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
             <h2 className="p-5">날짜 선택</h2>
-            <select className="bg-transparent mb-5">
-              {revenue.data.map((r) => (
-                <option key={r.date}>{r.date}</option>
+            <select className="bg-transparent mb-5" onChange={changeDateEvent}>
+              {dateList.map((date) => (
+                <option key={date}>{date}</option>
               ))}
             </select>
             <div className="overflow-hidden border rounded-lg">
@@ -59,7 +83,7 @@ export default function RevenueManage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {menus.data.map((menu) => (
+                  {dateRevenue.map((menu) => (
                     <tr key={menu.id}>
                       <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         {menu.menu}
@@ -71,7 +95,7 @@ export default function RevenueManage() {
                         {menu.shopSoldRevenue ? menu.shopSoldRevenue : 0}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        {menu.soldType ? menu.soldType : 0}
+                        {menu.deliverySoldCount ? menu.deliverySoldCount : 0}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         {menu.deliverySoldRevenue

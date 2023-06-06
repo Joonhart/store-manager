@@ -4,8 +4,6 @@ import { recoilMenuState } from "../../recoil/atom";
 export default function MenuManage() {
   const [menus, setMenus] = useRecoilState(recoilMenuState);
 
-  console.log(menus);
-
   const addMenu = () => {
     const newMenuName = document.getElementById("addMenuName").value;
     const newMenuPrice = document.getElementById("addMenuPrice").value;

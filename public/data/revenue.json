@@ -3,16 +3,14 @@
         "date": "2023-05-28",
         "menuList": [
             {
-                "menu": "햄버거",
-                "soldCount": 10,
-                "soldRevenue": 72000,
-                "soldType": "배달"
+                "menu": "데리야끼버거",
+                "deliverySoldCount": 12,
+                "deliverySoldRevenue": 92000
             },
             {
                 "menu": "치킨버거",
-                "soldCount": 22,
-                "soldRevenue": 160000,
-                "soldType": "배달"
+                "deliverySoldCount": 25,
+                "deliverySoldRevenue": 190000
             }
         ]
     },
@@ -36,13 +34,33 @@
         "menuList": [
             {
                 "menu": "치즈버거",
-                "deliverySoldCount": 12,
-                "deliverySoldRevenue": 92000
+                "deliverySoldCount": 7,
+                "deliverySoldRevenue": 80000
             },
             {
-                "menu": "돈까스",
+                "menu": "데리야끼버거",
                 "shopSoldCount": 16,
                 "shopSoldRevenue": 170000
+            },
+            {
+                "menu": "치킨버거",
+                "shopSoldCount": 16,
+                "shopSoldRevenue": 170000
+            }
+        ]
+    },
+    {
+        "date": "2023-06-06",
+        "menuList": [
+            {
+                "menu": "치킨버거",
+                "deliverySoldCount": 25,
+                "deliverySoldRevenue": 190000
+            },
+            {
+                "menu": "데리야끼버거",
+                "shopSoldCount": 9,
+                "shopSoldRevenue": 90000
             }
         ]
     }
