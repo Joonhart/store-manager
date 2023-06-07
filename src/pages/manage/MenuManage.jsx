@@ -21,6 +21,19 @@ export default function MenuManage() {
     document.getElementById("addMenuPrice").value = "";
   };
 
+  const editEventHandler = (t) => {
+    console.log("!!!");
+    console.log(t);
+  };
+
+  const deleteEventHandler = (deleteMenu) => {
+    const newData = menus.data.filter((menu) => menu.id !== deleteMenu.id);
+    setMenus({
+      ...menus,
+      data: newData,
+    });
+  };
+
   return (
     <div className="flex flex-col">
       {menus && (
@@ -65,21 +78,38 @@ export default function MenuManage() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {menus.data.map((menu) => (
-                    <tr key={menu.id}>
+                    <tr key={menu.id} id={menu.id}>
                       <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         {menu.id}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        {menu.menu}
+                        <input
+                          className="bg-transparent border-none"
+                          type="text"
+                          value={menu.menu}
+                          readOnly
+                        />
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         {menu.price}
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                        Edit
+                        <button
+                          onClick={(e) => {
+                            editEventHandler({ ...menu });
+                          }}
+                        >
+                          Edit
+                        </button>
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                        Delete
+                        <button
+                          onClick={(e) => {
+                            deleteEventHandler({ ...menu });
+                          }}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}

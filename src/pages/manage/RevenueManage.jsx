@@ -15,7 +15,7 @@ export default function RevenueManage() {
   }
 
   useEffect(() => {
-    const dateRevenueHistory = revenue.data.filter(data => data.date === date)[0].menuList
+    const dateRevenueHistory = revenue.data.filter(data => data.date === date)[0] ? revenue.data.filter(data => data.date === date)[0].menuList : []
     const newDateRevenue = []
     menus.data.forEach(menu => {
       const revenue = dateRevenueHistory.find(revenue => revenue.menu === menu.menu)
@@ -25,15 +25,12 @@ export default function RevenueManage() {
         newDateRevenue.push({...menu})
       }
     })
-    console.log(newDateRevenue);
     setDateRevenue(newDateRevenue)
   }, [date])
 
   useEffect(() => {
     setDateList(revenue.data.map(r => r.date).reverse())
   }, [revenue.data])
-
-  console.log(dateRevenue);
 
   return (
     <div className="flex flex-col">
