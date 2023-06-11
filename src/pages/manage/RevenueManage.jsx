@@ -2,6 +2,7 @@ import moment from "moment";
 import { useRecoilState } from "recoil";
 import { recoilMenuState, recoilRevenuState } from "../../recoil/atom";
 import { useEffect, useState } from "react";
+import RenenueCalendar from "../../components/RenenueCalendar";
 
 export default function RevenueManage() {
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
@@ -38,6 +39,7 @@ export default function RevenueManage() {
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
             <h2 className="p-5">날짜 선택</h2>
+            <RenenueCalendar />
             <select className="bg-transparent mb-5" onChange={changeDateEvent}>
               {dateList.map((date) => (
                 <option key={date}>{date}</option>
