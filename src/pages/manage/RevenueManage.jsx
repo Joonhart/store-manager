@@ -10,9 +10,11 @@ export default function RevenueManage() {
   const [revenue] = useRecoilState(recoilRevenuState)
   const [dateRevenue, setDateRevenue] = useState([])
   const [dateList, setDateList] = useState([])
+  const [showCalendar, setShowCalendar] = useState(false)
 
-  const changeDateEvent = (e) => {
-    setDate(e.target.value)
+  const changeDateHandler = (changedDate) => {
+    console.log('바꾸?');
+    setDate(changedDate)
   }
 
   useEffect(() => {
@@ -38,13 +40,8 @@ export default function RevenueManage() {
       {
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
-            <h2 className="p-5">날짜 선택</h2>
-            <RenenueCalendar />
-            <select className="bg-transparent mb-5" onChange={changeDateEvent}>
-              {dateList.map((date) => (
-                <option key={date}>{date}</option>
-              ))}
-            </select>
+            <h2 className="p-5" onClick={()=>setShowCalendar(!showCalendar)}>날짜 : {date}</h2> 
+            {showCalendar && <RenenueCalendar changeDate={changeDateHandler}/>}
             <div className="overflow-hidden border rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
