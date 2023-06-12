@@ -8,7 +8,7 @@ export default function RenenueCalendar({changeDate, date}) {
   
   useEffect(() => {
     changeDate(moment(value).format('YYYY-MM-DD'))
-  }, [value])
+  }, [value, changeDate])
 
   return (
     <div>

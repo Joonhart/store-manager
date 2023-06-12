@@ -13,7 +13,7 @@ export default function RevenueManage() {
   const [showCalendar, setShowCalendar] = useState(false)
 
   const changeDateHandler = (changedDate) => {
-    console.log('바꾸?');
+    console.log('useCallback 으로 중복 호출 해결 필요');
     setDate(changedDate)
   }
 
@@ -33,11 +33,13 @@ export default function RevenueManage() {
       }
     })
     setDateRevenue(newDateRevenue)
-  }, [date])
+  }, [date, menus, revenue])
 
   useEffect(() => {
     setDateList(revenue.data.map(r => r.date).reverse())
   }, [revenue.data])
+
+  console.log(dateList);
 
   return (
     <div className="flex flex-col">

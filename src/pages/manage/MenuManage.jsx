@@ -22,15 +22,15 @@ export default function MenuManage() {
   };
 
   const editEventHandler = (t) => {
-    console.log("!!!");
     console.log(t);
   };
 
   const deleteEventHandler = (deleteMenu) => {
     const newData = menus.data.filter((menu) => menu.id !== deleteMenu.id);
+    const reIndexData = newData.map((data, idx) =>  ({...data, id: idx+1}))
     setMenus({
       ...menus,
-      data: newData,
+      data: reIndexData,
     });
   };
 
