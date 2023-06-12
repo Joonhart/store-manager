@@ -18,6 +18,10 @@ export default function RevenueManage() {
   }
 
   useEffect(() => {
+    setShowCalendar(false)
+  }, [date])
+
+  useEffect(() => {
     const dateRevenueHistory = revenue.data.filter(data => data.date === date)[0] ? revenue.data.filter(data => data.date === date)[0].menuList : []
     const newDateRevenue = []
     menus.data.forEach(menu => {
@@ -41,7 +45,7 @@ export default function RevenueManage() {
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
             <h2 className="p-5" onClick={()=>setShowCalendar(!showCalendar)}>날짜 : {date}</h2> 
-            {showCalendar && <RenenueCalendar changeDate={changeDateHandler}/>}
+            {showCalendar && <RenenueCalendar changeDate={changeDateHandler} date={date}/>}
             <div className="overflow-hidden border rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">

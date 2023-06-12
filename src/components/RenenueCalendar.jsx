@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function RenenueCalendar({changeDate}) {
-  const [value, onChange] = useState(new Date());
+export default function RenenueCalendar({changeDate, date}) {
+  const [value, onChange] = useState(date);
   
   useEffect(() => {
-    console.log(value);
     changeDate(moment(value).format('YYYY-MM-DD'))
   }, [value])
 
