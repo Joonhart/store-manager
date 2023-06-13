@@ -2,7 +2,7 @@ import moment from "moment";
 import { useRecoilState } from "recoil";
 import { recoilMenuState, recoilRevenuState } from "../../recoil/atom";
 import { useEffect, useState } from "react";
-import RenenueCalendar from "../../components/RenenueCalendar";
+import SelectCalendar from "../../components/SelectCalendar";
 
 export default function RevenueManage() {
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
@@ -47,7 +47,7 @@ export default function RevenueManage() {
         <div className="overflow-x-auto">
           <div className="p-3 w-full inline-block align-middle">
             <h2 className="p-5" onClick={()=>setShowCalendar(!showCalendar)}>날짜 : {date}</h2> 
-            {showCalendar && <RenenueCalendar changeDate={changeDateHandler} date={date}/>}
+            {showCalendar && <SelectCalendar changeDate={changeDateHandler} date={date}/>}
             <div className="overflow-hidden border rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
