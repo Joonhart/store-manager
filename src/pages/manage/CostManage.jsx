@@ -6,9 +6,8 @@ import SelectCalendar from '../../components/SelectCalendar'
 
 export default function CostManage() {
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
-  const [intredients] = useRecoilState(recoilIngredientState)
-  const [dateRevenue, setDateRevenue] = useState([])
-  const [dateList, setDateList] = useState([])
+  const [ingredients, setIngredients] = useRecoilState(recoilIngredientState)
+  // const [dateList, setDateList] = useState([])
   const [showCalendar, setShowCalendar] = useState(false)
 
   const changeDateHandler = (changedDate) => {
@@ -20,25 +19,22 @@ export default function CostManage() {
     setShowCalendar(false)
   }, [date])
 
-  // useEffect(() => {
-  //   const dateRevenueHistory = revenue.data.filter(data => data.date === date)[0] ? revenue.data.filter(data => data.date === date)[0].menuList : []
-  //   const newDateRevenue = []
-  //   menus.data.forEach(menu => {
-  //     const revenue = dateRevenueHistory.find(revenue => revenue.menu === menu.menu)
-  //     if (revenue) {
-  //       newDateRevenue.push(Object.assign({}, menu, revenue))
-  //     } else {
-  //       newDateRevenue.push({...menu})
-  //     }
-  //   })
-  //   setDateRevenue(newDateRevenue)
-  // }, [date, menus, revenue])
+  const addCost = () => {
+    console.log("지출 항목 추가하기");
+    const newCostId = ingredients.data.length + 1
+    const newCostName = document.getElementById("addCostName").value
+    const newCostPlace = document.getElementById("addCostPlace").value
+    const newCostPrice = document.getElementById("addCostPrice").value
+    setIngredients({
+      ...ingredients,
+      data: [
+        ...ingredients.data,
+        { id: newCostId, menu: newCostName, where:newCostPlace, price: newCostPrice },
+      ],
+    })
+  }
 
-  // useEffect(() => {
-  //   setDateList(revenue.data.map(r => r.date).reverse())
-  // }, [revenue.data])
-
-  console.log(dateList);
+  console.log(ingredients);
 
   return (
     <div className="flex flex-col">
@@ -84,25 +80,93 @@ export default function CostManage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {/* {dateRevenue.map((menu) => ( */}
-                    <tr>
+                  {ingredients.data.map((ingredient) => (
+                    <tr key={ingredient.id}>
                       <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        햄버거빵
+                        {ingredient.menu}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        코스트코
+                      {ingredient.where}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        8000
+                      {ingredient.price}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
-                        3
+                      2
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
                         24000
                       </td>
                     </tr>
-                  {/* ))} */}
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <h2 className="p-5">메뉴 추가</h2>
+            <div className="overflow-hidden border rounded-lg">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                    >
+                      구매 항목 명
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                    >
+                      구매 경로
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                    >
+                      구매 단가
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    >
+                      선택
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-800 dark:text-gray-500 whitespace-nowrap">
+                      <input
+                        className="bg-transparent border-none"
+                        type="text"
+                        name="addCostName"
+                        id="addCostName"
+                        placeholder="구매 항목 명"
+                      />
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
+                      <input
+                        className="bg-transparent border-none"
+                        type="text"
+                        name="addCostPlace"
+                        id="addCostPlace"
+                        placeholder="구매 경로"
+                      />
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">
+                      <input
+                        className="bg-transparent border-none"
+                        type="number"
+                        name="addCostPrice"
+                        id="addCostPrice"
+                        placeholder="구매 단가"
+                      />
+                    </td>
+                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                      <button onClick={addCost}>지출 항목 추가</button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
